@@ -1,6 +1,7 @@
-## Welcome to Duan Hongjun's Pages
+## Welcome to Duan Hongjun's Blog
 
 我的域名为https://hongjun-duan.github.io/ludwig.GitHub.io/
+
 [点击此处可以直接跳转](https://hongjun-duan.github.io/ludwig.GitHub.io/)
 
 You can use the [editor on GitHub](https://github.com/hongjun-duan/ludwig.GitHub.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
