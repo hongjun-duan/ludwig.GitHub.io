@@ -6,7 +6,7 @@
 
 Blog中的内容一部分是从我的微信公众号中转移过来，以后我的一些文章会因为一些原因而只放在这里。
 
-### [观《决战中途岛》感](/web/guanjuezhanzhongtudaogan.html)
+### [观《决战中途岛》感](/guanjuezhanzhongtudaogan.html)
 
 You can use the [editor on GitHub](https://github.com/hongjun-duan/ludwig.GitHub.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
