@@ -19,15 +19,6 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 “质量”是指“抽象的程度”  
 
-汇编语言是对底层机器的些许地抽象，接着出现的所谓命令式语言（如FORTRAN、BASIC、C等）都是对汇编语言的抽象。尽管这些语言已经抽象到很高的高度，但是它们所作的抽象仍要求在解决问题时要基于计算机结构，而不是基于所要解决的问题的结构来考虑。这样程序员必须建立起在机器模型（位于“解空间”内，这里是对问题建模的地方，例如计算机）与实际待解决问题的模型（位于“问题空间”内，这里是问题存在的地方，例如一项业务）之间的关联。而建立这种映射是困难的。
+汇编语言是对底层机器的些许的抽象，接着出现的所谓命令式语言（如FORTRAN、BASIC、C等）都是对汇编语言的抽象。尽管这些语言已经抽象到很高的高度，但是它们所作的抽象仍要求在解决问题时要基于计算机结构，而不是基于所要解决的问题的结构来考虑。这样程序员必须建立起在机器模型（位于“解空间”内，这里是对问题建模的地方，例如计算机）与实际待解决问题的模型（位于“问题空间”内，这里是问题存在的地方，例如一项业务）之间的关联。而建立这种映射是困难的。
 
 --Thinking in Java
-
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hongjun-duan/ludwig.GitHub.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
