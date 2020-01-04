@@ -12,11 +12,12 @@ You can use the [editor on GitHub](https://github.com/hongjun-duan/ludwig.GitHub
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### 2020/01/04
+一个模型或者工具能解决问题的复杂度直接取决于这个模型或者工具所抽象的类型和质量。
+“类型”是指“所抽象的是什么？”
+“质量”是指“抽象的程度”
+                                                        --Thinking in Java
 
-This page's source use Markdown syntax
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
 ### Jekyll Themes
 
