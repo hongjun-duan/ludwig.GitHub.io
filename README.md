@@ -27,5 +27,5 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 --Thinking in Java
 
-### 2020/01/10
-![我与马晓君](/IMG_20180429_182258.jpg)
+### 2020/01/12
+[思考平庸与天才间的差别]()
