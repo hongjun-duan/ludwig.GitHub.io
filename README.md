@@ -8,7 +8,7 @@ Blog中的内容一部分是从我的微信公众号中转移过来，以后我�
 
 ### [纪念日计时](/commemorationTime.md)
 
-### [观《决战中途岛》感](/guanjuezhanzhongtudaogan.html)
+### [观《决战中途岛》感](/guanjuezhanzhongtudaogan.md)
 
 You can use the [editor on GitHub](https://github.com/hongjun-duan/ludwig.GitHub.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
