@@ -1,18 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>主页</title>
-    <style type="text/css">
-        .articleBody {
-            background-color: #A0A0A0;
-        }
-    </style>
+    <title>观《决战中途岛》感</title>
 </head>
 <body>
-<div class="articleTitle">
-    <h2>观《决战中途岛》感</h2>
-</div>
+
+### 观《决战中途岛》感
+
 <div class="articleBody">
     <p>
         我看《决战中途岛》这个电影的时候，电影院里加上我只有4个人，而且全是男性，其中还是一位父亲带着他的孩子一起来看的。不过通过这位父亲看完给他的孩子讲解来看，这位也是个军迷了。事实上中国人对中途岛战役甚至整个太平洋战争的了解的确不多，尽管这个战役对我国抗日其实也有影响。当然这是可以理解的，毕竟我们连自己人拍的《八佰》都不能上映呢。
