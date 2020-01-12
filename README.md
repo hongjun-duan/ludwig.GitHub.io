@@ -28,4 +28,4 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 --Thinking in Java
 
 ### 2020/01/12
-[思考平庸与天才间的差别]()
+[思考平庸与天才间的差别](/2020_01_12.html)
