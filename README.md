@@ -6,7 +6,7 @@
 
 Blog中的内容一部分是从我的微信公众号中转移过来，以后我的一些文章会因为一些原因而只放在这里。
 
-### [纪念日计时](/commemorationTime.html)
+### [纪念日计时](/commemorationTime.md)
 
 ### [观《决战中途岛》感](/guanjuezhanzhongtudaogan.html)
 
