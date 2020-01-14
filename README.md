@@ -29,3 +29,5 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### 2020/01/12
 [思考平庸与天才间的差别](/2020_01_12.md)
+
+### 我的工作记录(/workTrifle.md)
