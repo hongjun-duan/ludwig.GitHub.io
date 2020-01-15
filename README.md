@@ -31,3 +31,6 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 [思考平庸与天才间的差别](/2020_01_12.md)
 
 ### 我的工作记录(/workTrifle.md)
+
+
+看了Spring中的Application Context突然明白了Servlet中的Context，也明白了容器的含义。
