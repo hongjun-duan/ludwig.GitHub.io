@@ -12,7 +12,11 @@
 --Thinking in Java
 
 ### 2020/01/15
+
 .war .jar. ear
+
 JAR包: 扩展名为.jar，Java Application Archive，包含Java类的普通类库，resource和auxiliary files。
+
 WAR包: 扩展名为.war，Web Application Archive，包含全部Web应用程序，常见的包括resources，jar包，WebContent等组成。
+
 EAR包: 扩展名为.ear，Enterprise Application Archive，包含全部企业应用程序，包含JAR包，WAR包等文件。
