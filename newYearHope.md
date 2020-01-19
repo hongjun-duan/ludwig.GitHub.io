@@ -1,30 +1,3 @@
 <h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
-</h1>
-<h1>
-PS4 Pro!
+PS4 pro OR PS5
 </h1>
