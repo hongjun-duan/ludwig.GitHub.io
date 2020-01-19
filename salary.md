@@ -19,7 +19,7 @@
             }
             
             function showChart() {
-                let chart = Hightcharts.chart('chart', {
+                let chart = Highcharts.chart('chart', {
                     title: {
                         text: '工资'
                     },
