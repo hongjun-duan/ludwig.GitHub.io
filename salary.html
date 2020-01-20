@@ -14,6 +14,23 @@
 <body>
 <div id="chart"></div>
 <script>
+    const sum = [8979.64, 10760.00, 10460.00, 12244.25, 13000.00, 12700];
+    const tax = [0.00, 0.00, 37.11, 142.71, 165.37, 156.38];
+    const net = [8192.14, 9972.50, 9635.39, 11314.04, 12047.13, 11756.12];
+    
+    let i = 0;
+    sum.forEach(function(e) {
+        i += e;
+    });
+    const _2019Sum = i;
+
+    const _2019Receive = 68580.00;
+    const _2020Receive = 200600.00;
+    const _2021Receive = 238000.00;
+
+    const _2020Average = _2020Receive / 12;
+    const _2021Average = _2021Receive / 12; 
+
     window.onload = check;
     const f = "1/x";
     function check() {
@@ -74,18 +91,18 @@
                 {
                     name: "应发合计",
                     yAxis: 0,
-                    data: [8979.64, 10760.00, 10460.00, 12244.25, 13000.00, 12700]
+                    data: sum
                 },
                 {
                     name: "Tax",
                     yAxis: 1,
                     type: 'column',
-                    data:[0.00, 0.00, 37.11, 142.71, 165.37, 156.38]
+                    data: tax
                 },
                 {
                     name: "实际收入",
                     yAxis: 0,
-                    data: [8192.14, 9972.50, 9635.39, 11314.04, 12047.13, 11756.12]
+                    data: net
                 }
             ]
         });
