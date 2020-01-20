@@ -12,101 +12,108 @@
     </style>
 </head>
 <body>
-<div id="chart"></div>
-<script>
-    const sum = [8979.64, 10760.00, 10460.00, 12244.25, 13000.00, 12700];
-    const tax = [0.00, 0.00, 37.11, 142.71, 165.37, 156.38];
-    const net = [8192.14, 9972.50, 9635.39, 11314.04, 12047.13, 11756.12];
-    
-    let i = 0;
-    sum.forEach(function(e) {
-        i += e;
-    });
-    const _2019Sum = i;
+    <div>
+        <div id="chart"></div>
+        <div id="sum"></div>
+    </div>
 
-    const _2019Receive = 68580.00;
-    const _2020Receive = 200600.00;
-    const _2021Receive = 238000.00;
-
-    const _2020Average = _2020Receive / 12;
-    const _2021Average = _2021Receive / 12; 
-
-    window.onload = check;
-    const f = "1/x";
-    function check() {
-        let result = false;
-        let text = "请问∫f(x)dx=?";
-        if(prompt(text, '在此输入答案') == "lnx") {
-            result = true;
-        }
-        if(result) {
-            showChart();
-        }
-    }
-
-    function showChart() {
-        let chart = Highcharts.chart('chart', {
-            title: {
-                text: '工资收入详细'
-            },
-            subtitle: {
-                text: '机密'
-            },
-            yAxis: {
-                title: {
-
-                }
-            },
-            legend: {
-
-            },
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    pointStart: Date.UTC(2019, 6),
-                    pointIntervalUnit: 'month'
-                }
-            },
-            xAxis: {
-                type: 'datetime',
-                labels: {
-                    format: '{value:%Y-%m}'
-                }
-            },
-            yAxis: [
-                {
-                    title: {
-                        text: "RMB"
-                    }
-                }, {
-                    title: {
-                        text: "TAX"
-                    },
-                    opposite: true
-                }
-            ],
-            series: [
-                {
-                    name: "应发合计",
-                    yAxis: 0,
-                    data: sum
-                },
-                {
-                    name: "Tax",
-                    yAxis: 1,
-                    type: 'column',
-                    data: tax
-                },
-                {
-                    name: "实际收入",
-                    yAxis: 0,
-                    data: net
-                }
-            ]
+    <script>
+        const sum = [8979.64, 10760.00, 10460.00, 12244.25, 13000.00, 12700];
+        const tax = [0.00, 0.00, 37.11, 142.71, 165.37, 156.38];
+        const net = [8192.14, 9972.50, 9635.39, 11314.04, 12047.13, 11756.12];
+        
+        let i = 0;
+        sum.forEach(function(e) {
+            i += e;
         });
-    }
-</script>
+        const _2019Sum = i;
+
+        const _2019Receive = 68580.00;
+        const _2020Receive = 200600.00;
+        const _2021Receive = 238000.00;
+
+        const _2020Average = _2020Receive / 12;
+        const _2021Average = _2021Receive / 12; 
+
+        window.onload = check;
+        const f = "1/x";
+        function check() {
+            let result = false;
+            let text = "请问∫f(x)dx=?";
+            if(prompt(text, '在此输入答案') == "lnx") {
+                result = true;
+            } else {
+                alert("请输入正确的密码！");
+                history.back(-1);
+            }
+            if(result) {
+                showChart();
+            }
+        }
+
+        function showChart() {
+            let chart = Highcharts.chart('chart', {
+                title: {
+                    text: '工资收入详细'
+                },
+                subtitle: {
+                    text: '机密'
+                },
+                yAxis: {
+                    title: {
+
+                    }
+                },
+                legend: {
+
+                },
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                        pointStart: Date.UTC(2019, 6),
+                        pointIntervalUnit: 'month'
+                    }
+                },
+                xAxis: {
+                    type: 'datetime',
+                    labels: {
+                        format: '{value:%Y-%m}'
+                    }
+                },
+                yAxis: [
+                    {
+                        title: {
+                            text: "RMB"
+                        }
+                    }, {
+                        title: {
+                            text: "TAX"
+                        },
+                        opposite: true
+                    }
+                ],
+                series: [
+                    {
+                        name: "应发合计",
+                        yAxis: 0,
+                        data: sum
+                    },
+                    {
+                        name: "Tax",
+                        yAxis: 1,
+                        type: 'column',
+                        data: tax
+                    },
+                    {
+                        name: "实际收入",
+                        yAxis: 0,
+                        data: net
+                    }
+                ]
+            });
+        }
+    </script>
 </body>
 </html>
