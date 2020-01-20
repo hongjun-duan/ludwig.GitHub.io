@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <script src="highcharts.js"></script>
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
 </head>
 <body>
 <div id="chart" style="max-width:800px;height:400px"></div>
@@ -23,10 +23,10 @@
     function showChart() {
         let chart = Highcharts.chart('chart', {
             title: {
-                text: '工资'
+                text: '工资收入详细'
             },
             subtitle: {
-                text: '请勿转载'
+                text: '机密'
             },
             yAxis: {
                 title: {
@@ -51,17 +51,33 @@
                     format: '{value:%Y-%m}'
                 }
             },
+            yAxis: [
+                {
+                    title: {
+                        text: "RMB"
+                    }
+                }, {
+                    title: {
+                        text: "TAX"
+                    },
+                    opposite: true
+                }
+            ],
             series: [
                 {
                     name: "应发合计",
+                    yAxis: 0,
                     data: [8979.64, 10760.00, 10460.00, 12244.25, 13000.00, 12700]
                 },
                 {
                     name: "Tax",
+                    yAxis: 1,
+                    type: 'column',
                     data:[0.00, 0.00, 37.11, 142.71, 165.37, 156.38]
                 },
                 {
                     name: "实际收入",
+                    yAxis: 0,
                     data: [8192.14, 9972.50, 9635.39, 11314.04, 12047.13, 11756.12]
                 }
             ]
