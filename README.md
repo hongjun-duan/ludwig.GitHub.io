@@ -17,7 +17,7 @@ Blog中的内容一部分是从我的微信公众号中转移过来，以后我�
 
 ### [我的工作记录](/workTrifle.md)
 
-[点击查看段宏俊的新年愿望](/newYearHope.md)
+[2020年计划](/2020plan.md)
 
 看了Spring中的Application Context突然明白了Servlet中的Context，也明白了容器的含义。
 
