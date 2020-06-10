@@ -33,3 +33,7 @@ JavaEE提供的Servlet API使我们可以自己编写自己的Servlet来处理HT
 Browser接收到这个Redicect指令后会再次发送一个新的请求：GET /b，Server会返回这个URL页面。这就是重定向。
 这个过程中有两次HTTP Request。重定向有两种，一种是301响应，称为永久重定向；一种是302响应，称为临时重定向。
 
+#### Forward
+转发指的是当一个Servlet处理请求时，它可以决定自己不继续处理，而是转给另一个Servlet处理。Forward与Redirect的区别在于，Forward是在Server内部完成的，因此Browser只发出一个Request，而且Browser并不知道发生了这次Forward。
+
+#### Session
