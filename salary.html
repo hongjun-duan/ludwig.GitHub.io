@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <script src="highcharts.js"></script>
+    <script src="http://code.highcharts.com.cn/highcharts/8.1.0/highcharts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <style type="text/css">
         div#chart {
             max-width: 800px;
@@ -33,8 +34,9 @@
 
         const _2020Average = _2020Receive / 12;
         const _2021Average = _2021Receive / 12; 
-
-        window.onload = check;
+        $(function() {
+            check();
+        });
         const f = "1/x";
         function check() {
             let result = false;
