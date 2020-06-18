@@ -26,10 +26,10 @@ JavaEE提供的Servlet API使我们可以自己编写自己的Servlet来处理HT
 #### Redirect
 重定向是指当Browser请求一个URL时，Server返回一个Redirect指令，告诉Browser地址已经改变了，需要使用新的URL再发一遍请求。
 比如Browser发送GET /a，Server返回Redirect指令302：
- '''
+ ```
  HTTP/1.1 302 Found
  Location: /b
- '''
+ ```
 Browser接收到这个Redicect指令后会再次发送一个新的请求：GET /b，Server会返回这个URL页面。这就是重定向。
 这个过程中有两次HTTP Request。重定向有两种，一种是301响应，称为永久重定向；一种是302响应，称为临时重定向。
 
@@ -54,3 +54,190 @@ Servlet提供的HttpSession本质上就是通过一个名为JSESSIONID的Cookie�
 
 ### JSP开发
 JSP和Servlet其实没有任何区别，因为一个JSP在执行前首先会被编译成一个Servlet。可见JSP本质上就是一个Servlet，只不过无需配置映射路径，Web Server会根据路径查找对应的.jsp文件，如果找到了，就自动编译成Servlet再执行。在服务器运行过程中，如果修改了JSP的内容，那么服务器会自动重新编译。
+
+### MVC开发
+由以上得知：
++ Servlet适合编写Java代码，实现各种复杂的业务逻辑，但不适合输出复杂的HTML；
++ JSP适合编写HTML，并在其中插入动态内容，但不适合编写复杂的Java代码。
+如何才能结合Servlet和JSP的优点，避免两者的缺点。
+我们可以写一个Servlet用来执行与数据库、Java Bean相关的操作，然后把Request和Response给Forward到特定的JSP中。在这个JSP中，只负责展示JavaBean相关的信息。
+注意：
++ 这里把JSP放入WEB-INF文件夹下是因为它是一个特殊目录，Web Server会阻止浏览器对WEB-INF目录下任何资源的访问，这样就防止用户通过/user.jsp路径直接访问到JSP页面。（这里CTP框架与此不同，CTP框架下JSP文件都放在WEB-INF目录外）
+这样的话，我们把Servlet视为业务逻辑处理，把Java Bean视为模型，把JSP视为渲染。这种设计模式即MVC：Model-View-Controller，控制器，模型，视图。
+使用MVC模式的好处是，Controller专注于业务处理，它的处理结果就是Model。Model可以是一个JavaBean，也可以是一个包含多个对象的Map，Controller只负责把Model传递给View，View只负责把Model给“渲染”出来，这样，三者职责明确，且开发更简单，因为开发Controller时无需关注页面，开发View时无需关心如何创建Model。
+
+### MVC advanced devalopment
+通过结合Servlet和JSP的MVC，我们可以发挥二者的优点：
++ Servlet实现业务逻辑；
++ JSP实现展示逻辑。
+但是，直接把MVC搭在Servlet和JSP上并不好，这是因为：
++ Servlet提供的接口仍然偏底层，需要实现Servlet调用相关接口；
++ JSP对页面开发不友好，更好的替代品是模板引擎；
++ 业务逻辑最好由纯粹的Java类实现，而不是强迫继承自Servlet。
+因此，我们可以用普通的Java类来实现Controller，类似下面这种：
+```
+    public class Controller {
+        @GetMapping("/signin")
+        public ModelAndView signin() {
+            ...
+        }
+        @PostMapping("/signin")
+        public ModelAndView doSignin(SigninBean bean) {
+            ...
+        }
+        @GetMapping("/signout")
+        public ModelAndView soignout(HttpSession session) {
+            ...
+        }
+    }
+```
+如果是GET请求，我们希望MVC框架可以直接把URL参数按方法参数对应起来然后传入：
+```
+    @GetMapping("/hello")
+    public ModelAndView hello(String url) {
+        ...
+    }
+```
+如果是POST请求，我们希望MVC框架可以直接把Post参数变成一个JavaBean后通过方法参数传入：
+```
+    @PostMapping("/signin")
+    public ModelAndView doSignin(SigninBean bean) {
+        ...
+    }
+```
+为了增加灵活性，如果Controller的方法在处理请求时需要访问HttpServletRequest、HttpServletResponse、HttpSession这些实例时，只要方法参数有定义，就可以自动传入：
+```
+    @GetMapping("/signout")
+    public ModelAndView signout(HttpSession session) {
+        ...
+    }
+```
+#### 设计MVC框架
+那么如何设计这个MVC框架？首先定义ModeAndView：
+```
+    public class ModelAndView {
+        Map<String, Object> model;
+        String view;
+    }
+```
+比较复杂的是我们需要在MVC框架中创建一个接收所有请求的Servlet，通常我们把它命名为DispatcherServlet，它总是映射到/，然后，根据不同的Controller的方法定义的@Get或@Post的Path决定调用哪个方法，最后，获得方法返回的ModelAndView后，渲染模板，写入HttpServletResponse，即完成了整个MVC的处理。
+DispatcherServlet以及如何渲染均由MVC框架实现，在MVC框架之上只需要编写每一个Controller。
+我们来看看如何编写最复杂的DispatcherServlet。首先，我们需要存储请求路径到某个具体方法的映射：
+```
+@WebServlet(urlPatterns = "/")
+public class DispatcherServlet extends HttpServlet {
+    private Map<String, GetDispatcher> getMappings = new HashMap<>();
+    private Map<String, PostDispatcher> postMappings = new HashMap<>();
+}
+```
+处理一个GET请求是通过GetDispatcher完成的，它需要如下信息：
+```
+class GetDispatcher {
+    Object instance; // Controller实例
+    Method method; // Controller方法
+    String[] parameterNames; // 方法参数名称
+    Class<?>[] parameterClasses; // 方法参数类型
+}
+```
+有了以上信息，就可以定义一个invoke()方法来处理请求：
+```
+class GetDispatcher {
+    ...
+    public ModelAndView invoke(HttpServletRequest request, HttpServletResponse response) {
+        Object[] arguments = new Object[parameterClasses.length];
+        for(int i = 0; i < parameterClasses.length; i++) {
+            String parameterName = parameterNames[i];
+            Class<?> parameterClass = parameterClasses[i];
+            if(parameterClass == HttpServletRequest.class) {
+                arguments[i] = request;
+            } else if (parameterClass == HttpServletResponse.class) {
+                arguments[i] = response;
+            } else if (parameterClass == HttpSession.class) {
+                arguments[i] = request.getSession();
+            } else if (parameterClass == int.class) {
+                arguments[i] = Integer.valueOf(getOrDefault(request, parameterName, "0"));
+            } else if (parameterClass == long.class) {
+                arguments[i] = Long.valueOf(getOrDefault(request, parameterName, "0"));
+            } else if (parameterClass == boolean.class) {
+                arguments[i] = Boolean.valueOf(getOrDefault(request, parameterName, "false"));
+            } else if (parameterClass == String.class) {
+                arguments[i] = getOrDefault(request, parameterName, "");
+            } else {
+                throw new RuntimeException("Missing handler for type: " + parameterClass);
+            }
+            return (ModelAndView) this.method.invoke(this.instance, arguments);
+        }
+    }
+    private String getOrDefault(HttpServletRequest request, String name, String defaultValue) {
+        String s = request.getParameter(name);
+        return s == null ? defaultValue : s;
+    }
+}
+```
+上述代码使用了反射。
+类似的，PostDispatcher需要如下信息：
+```
+class PostDispatcher {
+    Object instance; // Controller实例
+    Method method; // Controller方法
+    Class<?>[] parameterClasses; // 方法参数类型
+    ObjectMapper objectMapper; // JSON映射
+}
+```
+POST的dispatcher如下：
+```
+class PostDispatcher {
+    ...
+    public ModelAndView invoke(HttpServletRequest request, HttpServletResponse response) {
+        Object[] arguments = new Object[parameterClasses.length];
+        for (int i = 0; i < parameterClasses.length; i++) {
+            Class<?> parameterClass = parameterClasses[i];
+            if (parameterClass == HttpServletRequest.class) {
+                arguments[i] = request;
+            } else if (parameterClass == HttpServletResponse.class) {
+                arguments[i] = response;
+            } else if (parameterClass == HttpSession.class) {
+                arguments[i] = request.getSession();
+            } else {
+                // 读取JSON并解析为JavaBean:
+                BufferedReader reader = request.getReader();
+                arguments[i] = this.objectMapper.readValue(reader, parameterClass);
+            }
+        }
+        return (ModelAndView) this.method.invoke(instance, arguments);
+    }
+}
+```
+最后我们来实现整个DispatcherServlet的处理流程，以doGet()为例：
+```
+class DispatcherServlet extends HttpServer {
+    ...
+    public void doGet(HttpServletRequest request, HttpServletResponse respose) throws ServletException, IOException {
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
+        String path = req.getRequestURI().substring(req.getContextPath().length());
+        // 根据路径查找GetDispatcher:
+        GetDispatcher dispatcher = this.getMappings.get(path);
+        if (dispatcher == null) {
+            // 未找到返回404:
+            resp.sendError(404);
+            return;
+        }
+        // 调用Controller方法获得返回值:
+        ModelAndView mv = dispatcher.invoke(req, resp);
+        // 允许返回null:
+        if (mv == null) {
+            return;
+        }
+        // 允许返回`redirect:`开头的view表示重定向:
+        if (mv.view.startsWith("redirect:")) {
+            resp.sendRedirect(mv.view.substring(9));
+            return;
+        }
+        // 将模板引擎渲染的内容写入响应:
+        PrintWriter pw = resp.getWriter();
+        this.viewEngine.render(mv, pw);
+        pw.flush();
+    }
+}
+```
