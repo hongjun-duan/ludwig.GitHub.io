@@ -1,0 +1,2 @@
+## Java 8
+行为参数化：比如编写一个filter方法，那么filter的条件有许多且变化。不要直接把条件当作参数传入filter函数，如numberFilter(List<Number> list, int flag)。而是把行为参数化，行为参数化是条件参数化的更高一层的抽象。这里传入一个Predicate。这是一个接口，只有一个boolean test(T t)的方法。filter中调用这个方法来判断条件。因此不同的行为对应实现不同的Predicate来传入filter方法。
