@@ -22,3 +22,12 @@
 我们每天都在和自己的手机、电脑、汽车、房子和互联网、show、地位交媾，我们既是阳性也是阴性，我们把精液和爱液都涂抹在脸上，感到无上的幸福。  
 <p align="right">观<i>景观社会</i>有感</p>
 
+## 2020.11.08
+### 杭州萧山图书馆
+Reactive Programming  
+Reactice Stream  
++ Publisher
++ Subscriber
++ Subscription
++ Processor
+
