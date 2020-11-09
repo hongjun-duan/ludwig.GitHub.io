@@ -10,7 +10,7 @@ Blog中的内容一部分是从我的微信公众号中转移过来，以后我�
 
 ### [观《决战中途岛》感](/guanjuezhanzhongtudaogan.md)
 
-### [日记](/diary.md)
+### [日记](/journal.md)
 
 [思考平庸与天才间的差别](/2020_01_12.md)
 
