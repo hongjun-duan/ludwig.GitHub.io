@@ -11,16 +11,16 @@
         <h2 id="show"></h2>
         <h2 id="marriage"></h2>
         <script>
-            let from = new Date('2016-12-15T18:00:00');
-            let to = new Date();
-            let result = ((to - from) / 1000 / 60 / 60 / 24) >>> 0;
-            let show = document.getElementById('show');
-            show.innerHTML = "自段宏俊与马晓君恋爱已" + result + "天";
             $(function() {
+                let from = new Date('2016-12-15T18:00:00');
+                let to = new Date();
+                let result = ((to - from) / 1000 / 60 / 60 / 24) >>> 0;
+                let show = document.getElementById('show');
+                show.innerHTML = "自段宏俊与马晓君恋爱已" + result + "天";
                 let start = new Date('2021-05-23T00:00:00');
                 let now = new Data();
                 let r = ((now - start) / 1000 / 60 / 60 / 24) >>> 0;
-                $('#marriage').innerHTML = "自段宏俊与马晓君结婚已" + r + "天";
+                $('#marriage').text("自段宏俊与马晓君结婚已" + r + "天");
             });
         </script>
     </body>
