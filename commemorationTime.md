@@ -19,7 +19,7 @@
                 let show = document.getElementById('show');
                 show.innerHTML = "自段宏俊与马晓君恋爱已" + result + "天";
                 let start = new Date('2021-05-23T00:00:00');
-                let now = new Data();
+                let now = new Date();
                 let r = ((now - start) / 1000 / 60 / 60 / 24) >>> 0;
                 $('#marriage').text("自段宏俊与马晓君结婚已" + r + "天");
             });
