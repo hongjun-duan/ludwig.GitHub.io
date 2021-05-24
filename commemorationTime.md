@@ -23,10 +23,15 @@
                 let now = new Date();
                 let r = ((now - start) / 1000 / 60 / 60 / 24) >>> 0;
                 $('#marriage').text("自段宏俊与马晓君结婚已" + r + "天");
-                $('#marriageDetail').text("自段宏俊与马晓君结婚已" + (now.getFullYear() - start.getFullYear()) + "年"
+                setInterval(function() {
+                    $('#marriageDetail').text("自段宏俊与马晓君结婚已" + (now.getFullYear() - start.getFullYear()) + "年"
                 + (now.getMonth() - start.getMonth()) + "月" + (now.getDay() - start.getDay()) + "日"
                 + (now.getHours() - start.getHours()) + "时" + (now.getMinutes() - start.getMinutes()) + "分"
                 + (now.getSeconds() - start.getSeconds()) + "秒");
+                }, 1000);
+                setInterval(function(){
+				    span.innerText = formatDate();
+			    },1000);
             });
         </script>
     </body>
