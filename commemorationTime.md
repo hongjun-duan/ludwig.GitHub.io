@@ -3,16 +3,17 @@
     <head>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <style type="text/css">
-            h2#show, h2#marriage, h2#marriageDetail {
+            li#show, li#marriage, h2#marriageDetail {
                 margin: 30px auto;
-                text-align: center;
+                font-weight: bold;
             }
         </style>
     </head>
     <body>
-        <h2 id="show"></h2>
-        <h2 id="marriage"></h2>
-        <h2 id="marriageDetail"></h2>
+        <ul>
+            <li id="show"></li>
+            <li id="marriage"></li>
+        </ul>
         <script>
             $(function() {
                 let from = new Date('2016-12-15T18:00:00');
@@ -26,11 +27,11 @@
                 let start = new Date('2021-05-23T00:00:00');
                 let now = new Date();
                 let r = ((now - start) / 1000 / 60 / 60 / 24) >>> 0;
-                $('#marriage').text("自段宏俊与马晓君结婚已" + trans(r) + "天");
-                $('#marriageDetail').text("自段宏俊与马晓君结婚已" + trans(now.getFullYear() - start.getFullYear()) + "年"
+                $('#marriage').text("自段宏俊与马晓君结婚已" + trans(r) + "天" + 
+                "(" + trans(now.getFullYear() - start.getFullYear()) + "年"
                 + trans(now.getMonth() - start.getMonth()) + "月" + trans(now.getDay() - start.getDay()) + "日"
                 + trans(now.getHours() - start.getHours()) + "时" + trans(now.getMinutes() - start.getMinutes()) + "分"
-                + trans(now.getSeconds() - start.getSeconds()) + "秒");
+                + trans(now.getSeconds() - start.getSeconds()) + "秒" + ")");
             }
             function trans(e) {
                 if (e < 10) {
