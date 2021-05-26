@@ -5,7 +5,8 @@
         <style type="text/css">
             li#show, li#marriage, h2#marriageDetail {
                 margin: 30px auto;
-                font-weight: bold;
+                font-weight: bolder;
+                font-size: larger;
             }
         </style>
     </head>
