@@ -19,10 +19,9 @@
 1. 首先，我们定义关系这一概念
 
 2. 其次，满足：
+$$(xRy_1)\wedge(xRy_2)\Rightarrow(y_1=y_2)$$
 
-    ​	$(xRy_1)\wedge(xRy_2)\Rightarrow(y_1=y_2)$
-
-    的关系$R$称为函数关系，简称函数
+的关系$R$称为函数关系，简称函数
 
 映射分类：
 
@@ -34,9 +33,9 @@
 
 1. 加法公理，定义了一个映射（加法）：
 
-​$$+:R \times R \rightarrow R$$
+$$+:R \times R \rightarrow R$$
 
-​且以下条件成立：
+且以下条件成立：
 
 + $\exists 0 \in R, \forall x \in R, x + 0 = 0 + x = x$				
 
@@ -54,9 +53,9 @@
 
 2. 乘法公理，定义一个映射（乘法）：
 
-    ​	$\cdot : R \times R \rightarrow R$
+$$\cdot : R \times R \rightarrow R$$
 
-​		且以下条件成立：
+且以下条件成立：
 
 + $\exists 1 \in R\backslash0, \forall x \in R, x \cdot 1 = 1 \cdot x = x$ 
 
@@ -73,7 +72,7 @@ $\forall x, y, z \in R, (x + y) \cdot z = x \cdot z + y \cdot z$
 
 如果某集合$G$满足了上述的加法公理和乘法公理，则称$G$为代数域，简称域。
 
-3. 序公理。
+1. 序公理。
 
 $R$的元素存在关系$\leq$，满足以下条件：
 
@@ -88,3 +87,15 @@ $\leq$称为不等关系，如果一个集合满足前三个条件，则该集�
 
 5. 完备性公理（连续性公理），如果$X$与$Y$是$R$的非空子集，且$\forall x \in X, y \in Y, x \le y \Rightarrow (\exists c \in R, x \le c \le y)$
 
+### 上界和下界
+既有上界又有下界的集合称为*有界集*
+
+最大元素和最小元素
+$$ (a = max X) := ((a \in X) \wedge \forall x \in X (x \leq a)) $$
+$$ (a = min X) := ((a \in X) \wedge \forall x \in X (x \geq a)) $$
+
+上确界和下确界
+$$ sup X := min\{c \in R | \forall x \in X, x \leq c\} $$
+$$ inf X := max\{c \in R | \forall x \in X, x \geq c\} $$
+
+上确界原理：
